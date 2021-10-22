@@ -1,0 +1,65 @@
+{% extends 'template.html' %}
+{% block contenido %}
+{% load static %}
+
+<style>
+h1 {background:#DAF2D7;margin:0}
+padding-bottom:20px;
+width:290px;
+color:#78788c;
+solid #78788c
+}
+main{background:#378947;margin:0}
+padding-bottom:20px;
+width:290px;
+color:#78788c;
+solid #78788c
+}
+</style>
+	<main>
+		<!--Acerca de - contenido -->
+		<div class="container">
+			<div class="row contenedor">
+				<div class="col">
+					<h1 class="titulo">Mantenimientos De Proveedor</h1>
+
+					<div class="row justify-content-center">
+							<a href="{% url 'proveedorguardar'  %}" class="btn btn-success mr-3" target="modificar"><span class="fa fa-print"></span>Guarda</a>
+							<a href="{% url 'proveedorpdf'  %}" class="btn btn-success mr-3" target="print"><span class="fa fa-print"></span> Imprimir</a>
+
+    						<TABLE class="table table-bordered" BORDER="1">
+								<TR>
+									<TH>id</TH>
+									<TH>Cedula del Proveedor</TH>
+        							<TH>Nombre Del Proveedor</TH>
+									<TH>Telefono Del Proveedor</TH>
+
+									<TH>Activado/Anulado</TH>
+									<TH>Modificar</TH>
+									<TH>imprimir</TH>
+								</TR>
+									{% for presenta in object_list %}
+										<TR>
+											<TD>{{ presenta.id }}</TD>
+											<TD>{{ presenta.proveedorcedula }}</TD>
+											<TD>{{ presenta.proveedornombres }}</TD>
+											<TD>{{ presenta.proveedortelefono }}</TD>
+											<TD>{{ presenta.proveedoranulado }}</TD>
+
+
+											<td><a href="{% url 'proveedormodificar' presenta.id %}" class="btn btn-warning" target="print"><span class="fa fa-print"></span> Modificar </a></td>
+											<td><a href="{% url 'proveedorindividual' presenta.id %}" class="btn btn-primary" target="modificar"><span class="fa fa-print"></span> Imprimir </a></td>
+
+
+
+										</TR>
+     								{% endfor %}
+							</TABLE>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+{% endblock %}

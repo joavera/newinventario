@@ -1,0 +1,37 @@
+{% extends 'template.html' %}
+{% block contenido %}
+{% load static %}
+
+<style>
+h2 {background:#DAF2D7;margin:0}
+padding-bottom:20px;
+width:290px;
+color:#78788c;
+solid #78788c
+}
+main{background:#DAF2D7;margin:0}
+padding-bottom:20px;
+width:290px;
+color:#5AE17A;
+solid #78788c
+}
+</style>
+	<main>
+		<!--Acerca de - contenido -->
+		<div class="container">
+			<div class="row contenedor">
+				<div class="col">
+					<h2 class="titulo">Sistema De Inventario </h2>
+
+				</div>
+                <!--imagen de Cabecera -->
+ 			  <div class="row slider">
+				<div class="col">
+					<img src="{% static 'core/img/sistema01.png' %}" class="w-100" alt="Responsive image">
+				</div>
+			  </div>
+			</div>
+		</div>
+	</main>
+
+{% endblock %}

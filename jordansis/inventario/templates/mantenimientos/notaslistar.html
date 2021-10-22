@@ -1,0 +1,65 @@
+{% extends 'template.html' %}
+{% block contenido %}
+{% load static %}
+<style>
+h2 {background:#DAF2D7;margin:0}
+padding-bottom:20px;
+width:290px;
+color:#78788c;
+solid #78788c
+}
+main{background:#378947;margin:0}
+padding-bottom:20px;
+width:290px;
+color:#78788c;
+solid #78788c
+}
+</style>
+
+	<main>
+		<!--Acerca de - contenido -->
+		<div class="container">
+			<div class="row contenedor">
+				<div class="col">
+					<h2 class="titulo"> Notas </h2>
+
+					<div class="row justify-content-center">
+							<a href="{% url 'notasguardar' %}" class="btn btn-success mr-3" target="modificar"><span class="fa fa-print"></span>Guardar&nbsp;</a>
+							<a href="{% url 'notaspdf' %}" class="btn btn-success mr-3" target="print"><span class="fa fa-print"></span>Imprimir</a>
+
+    						<TABLE class="table table-bordered" BORDER="1">
+								<TR>
+									<TH>idEstudiante</TH>
+									<TH>idMateria</TH>
+									<TH>idestudi</TH>
+        							<TH>Notas </TH>
+
+									<TH>Modificar</TH>
+		                            <TH>imprimir</TH>
+								</TR>
+								{% for presenta in object_list %}
+								<TR>
+									<TD>{{ presenta.id }}</TD>
+									<TD>{{ presenta.ventadetalleventatienda }}</TD>
+									<TD>{{ presenta.ventadetalleproductos }}</TD>¿
+									<TD>{{ presenta.notaestudiante }}</TD>
+
+
+
+											<td><a href="{% url 'notasmodificar' presenta.id %}" class="btn btn-warning" target="print"><span class="fa fa-print"></span> Modificar</a></td>
+											<td><a href="{% url 'notasindividual' presenta.id %}" class="btn btn-primary" target="modificar"><span class="fa fa-print"></span> imprimir</a></td>
+
+
+
+										</TR>
+     								{% endfor %}
+							</TABLE>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+
+{% endblock %}

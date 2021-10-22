@@ -1,0 +1,73 @@
+{% extends 'template.html' %}
+{% block contenido %}
+{% load static %}
+<style>
+h2 {background:#DAF2D7;margin:0}
+padding-bottom:20px;
+width:290px;
+color:#78788c;
+solid #78788c
+}
+main{background:#378947;margin:0}
+padding-bottom:20px;
+width:290px;
+color:#78788c;
+solid #78788c
+}
+</style>
+
+	<main>
+		<!--Acerca de - contenido -->
+		<div class="container">
+			<div class="row contenedor">
+				<div class="col">
+
+					<h2 class="titulo">Mantenimientos De Productos</h2>
+
+					<div class="row justify-content-center">
+							<a href="{% url 'productosguardar' %}" class="btn btn-success mr-3" target="modificar"><span class="fa fa-print"></span>Guardar&nbsp;</a>
+							<a href="{% url 'productospdf'  %}" class="btn btn-success mr-3" target="print"><span class="fa fa-print"></span> Imprimir</a>
+
+    						<TABLE class="table table-bordered" BORDER="1">
+								<TR>
+									<TH>id</TH>
+									<TH>grupo</TH>
+        							<TH>productos</TH>
+									<TH>Precio</TH>
+									<TH>codigo</TH>
+									<TH>existencia</TH>
+									<TH>productosgrupo </TH>
+									<TH> anulado </TH>
+									<TH> modificar </TH>
+									<TH> imprimir </TH>
+
+
+								</TR>
+									{% for presenta in object_list %}
+										<TR>
+											<TD>{{ presenta.id }}</TD>
+											<TD>{{ presenta.productosgrupo.gruponombre}}</TD>
+                                            <TD>{{ presenta.productosnombre }}</TD>
+                                            <TD>{{ presenta.productospreciovta }}</TD>
+                                            <TD>{{ presenta.productoscodigo }}</TD>
+                                            <TD>{{ presenta.productosexistencia }}</TD>
+											<TD>{{ presenta.productosgrupo  }}</TD>
+											<TD>{{ presenta.productosanulado }}</TD>
+
+
+											<td><a href="{% url 'productosindividual' presenta.id %}" class="btn btn-warning" target="print"><span class="fa fa-print"></span> Imprimir</a></td>
+											<td><a href="{% url 'productosmodificar' presenta.id %}" class="btn btn-primary" target="modificar"><span class="fa fa-print"></span> Modificar</a></td>
+
+
+
+										</TR>
+     								{% endfor %}
+							</TABLE>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'template.html' %}
+{% block contenido %}
+{% load static %}
+<style>
+h2 {background:#DAF2D7;margin:0}
+padding-bottom:20px;
+width:290px;
+color:#78788c;
+solid #78788c
+}
+main{background:#378947;margin:0}
+padding-bottom:20px;
+width:290px;
+color:#78788c;
+solid #78788c
+}
+</style>
+
+	<main>
+		<!--Acerca de - contenido -->
+		<div class="container">
+			<div class="row contenedor">
+				<div class="col">
+					<h2 class="titulo">Mantenimientos de cliente</h2>
+
+					<div class="row justify-content-center">
+							<a href="{% url 'clienteguardar' %}" class="btn btn-success mr-3" target="modificar"><span class="fa fa-print"></span>Guardar&nbsp;</a>
+							<a href="{% url 'clientepdf' %}" class="btn btn-success mr-3" target="print"><span class="fa fa-print"></span>Imprimir</a>
+
+    						<TABLE class="table table-bordered" BORDER="1">
+								<TR>
+									<TH>id</TH>
+									<TH>Cedula</TH>
+        							<TH>Nombre de cliente</TH>
+									<TH>Telefono del cliente</TH>
+
+									<TH>Activado/Anulado</TH>
+									<TH>Modificar</TH>
+		                            <TH>imprimir</TH>
+								</TR>
+								{% for presenta in object_list %}
+								<TR>
+									<TD>{{ presenta.id }}</TD>
+									<TD>{{ presenta.clientecedula }}</TD>
+									<TD>{{ presenta.clientenombre }}</TD>¿
+									<TD>{{ presenta.clientetelefono }}</TD>
+									<TD>{{ presenta.clienteanulado }}</TD>
+
+
+											<td><a href="{% url 'clientemodificar' presenta.id %}" class="btn btn-warning" target="print"><span class="fa fa-print"></span> Modificar</a></td>
+											<td><a href="{% url 'clienteindividual' presenta.id %}" class="btn btn-primary" target="modificar"><span class="fa fa-print"></span> imprimir</a></td>
+
+
+
+										</TR>
+     								{% endfor %}
+							</TABLE>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+{% endblock %}
+
